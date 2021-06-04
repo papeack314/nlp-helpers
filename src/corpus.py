@@ -21,4 +21,4 @@ class NewsDataset:
 
         self.train = Dataset(train_data, train_label)
         self.val = Dataset(val_data, val_label)
-        self.test = Dataset(news_test.data, news_train.target)
+        self.test = Dataset(news_test.data, news_test.target)

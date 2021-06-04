@@ -5,16 +5,16 @@ from sklearn.metrics import accuracy_score
 
 
 if __name__ == "__main__":
-    dataset = NewsDataset()
+    dataset = NewsDataset(categories=["sci.crypt", "sci.electronics", "sci.med", "sci.space"])
 
-    t2v = Text2Vecotor(lang="en", vector_type="tf-idf")
+    t2v = Text2Vecotor(lang="en", vector_type="transformer")
     X_train, y_train = t2v.fit_transform(dataset.train.data), dataset.train.labels
     X_val, y_val = t2v.transform(dataset.val.data), dataset.val.labels
     X_test, y_test = t2v.transform(dataset.test.data), dataset.test.labels
 
     model = CatBoostClassifier(
         iterations=10000,
-        early_stopping_rounds=100)
+        early_stopping_rounds=50)
     model.fit(X_train, y_train, eval_set=[(X_val, y_val)])
 
     train_pred = model.predict(X_train)
