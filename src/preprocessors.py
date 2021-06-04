@@ -34,7 +34,7 @@ class Text2Vecotor:
                   texts: Iterable[str]) -> Iterable[Iterable[np.float64]]:
         if self.vector_type in ["tfidf", "tf-idf", "tf_idf"]:
             tokens = self._create_tokens(texts)
-            return self.vectorizer.transform(tokens)
+            return self.vectorizer.transform(tokens).toarray()
 
     def fit_transform(self,
                       texts: Iterable[str]) -> Iterable[Iterable[np.float64]]:

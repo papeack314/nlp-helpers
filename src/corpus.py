@@ -19,6 +19,6 @@ class NewsDataset:
                                                                         test_size=val_size,
                                                                         random_state=random_seed)
 
-        self.train = Dataset(train_data[:100], train_label[:100])
-        self.val = Dataset(val_data[:100], val_label[:100])
-        self.test = Dataset(news_test.data[:100], news_train.target[:100])
+        self.train = Dataset(train_data, train_label)
+        self.val = Dataset(val_data, val_label)
+        self.test = Dataset(news_test.data, news_train.target)
